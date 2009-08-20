@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>{{ person.full_name }}'s Resume</title>
+        <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/resume.css" />
+    </head>
+    <body>
+        <h1>{{ person.full_name }}</h1>
+        <p id="bio_left">
+            {{ person.phone_number }}<br />
+            <a href="mailto:{{ person.email }}">{{ person.email }}</a>
+        </p>
+        <p id="bio_right">
+            {{ person.address.street }}<br />
+            {{ person.address.city }}, {{ person.address.state }} {{ person.address.zipcode }}
+        </p>
+        {% regroup person.experiences.all by type.name as items %}
+        {% for type in items %}
+            <h2>{{ type.grouper }}</h2>
+            {% for experience in type.list %}
+                <div class="job">
+                    <p class="date">{{ experience.time_period }}</p>
+                    <div class="job_data">
+                        <h3>{{ experience.title }}</h3>
+                        <p class="location">{{ experience.location|default:'None' }}</p>
+                        <p>{{ experience.description }}</p>
+                        {% if experience.items.all %}
+                            <ul>
+                                {% for item in experience.items.all %}
+                                    <li>{{ item.details }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </body>
+</html>
