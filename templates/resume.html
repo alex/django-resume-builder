@@ -1,3 +1,5 @@
+{% load experience_tags %}
+
 <html>
     <head>
         <title>{{ person.full_name }}'s Resume</title>
@@ -13,15 +15,15 @@
             {{ person.address.street }}<br />
             {{ person.address.city }}, {{ person.address.state }} {{ person.address.zipcode }}
         </p>
-        {% regroup person.experiences.all by type.name as items %}
-        {% for type in items %}
+        {% regroup person.experiences.all by type as items %}
+        {% for type in items|sort_by_order %}
             <h2>{{ type.grouper }}</h2>
             {% for experience in type.list %}
                 <div class="job">
                     <p class="date">{{ experience.time_period }}</p>
                     <div class="job_data">
                         <h3>{{ experience.title }}</h3>
-                        <p class="location">{{ experience.location|default:'None' }}</p>
+                        <p class="location">{{ experience.location }}</p>
                         <p class="description">{{ experience.description }}</p>
                         {% if experience.items.all %}
                             <ul>

@@ -4,6 +4,10 @@ from people.models import Person
 
 class ExperienceType(models.Model):
     name = models.CharField(max_length=100)
+    order = models.IntegerField()
+
+    class Meta:
+        ordering = ('order',)
 
     def __unicode__(self):
         return self.name

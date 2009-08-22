@@ -13,5 +13,9 @@ class ExperienceAdmin(admin.ModelAdmin):
         LineItemInline
     ]
 
-admin.site.register(ExperienceType)
+class ExperienceTypeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'order')
+    list_editable = ('order',)
+
+admin.site.register(ExperienceType, ExperienceTypeAdmin)
 admin.site.register(ExperienceItem, ExperienceAdmin)
