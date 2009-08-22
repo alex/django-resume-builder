@@ -103,6 +103,10 @@ body div ul {
     width: 125px;
 }
 
+.description {
+    clear: both;
+}
+
 .position {
     font-style: italic;
     margin: 0 0 5px 0;

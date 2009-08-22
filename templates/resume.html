@@ -22,7 +22,7 @@
                     <div class="job_data">
                         <h3>{{ experience.title }}</h3>
                         <p class="location">{{ experience.location|default:'None' }}</p>
-                        <p>{{ experience.description }}</p>
+                        <p class="description">{{ experience.description }}</p>
                         {% if experience.items.all %}
                             <ul>
                                 {% for item in experience.items.all %}
@@ -34,5 +34,7 @@
                 </div>
             {% endfor %}
         {% endfor %}
+        <h2></h2>
+        <p>References available upon request</p>
     </body>
 </html>
