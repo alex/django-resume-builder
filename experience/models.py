@@ -24,6 +24,9 @@ class ExperienceItem(models.Model):
 
     def __unicode__(self):
         return "%s at %s" % (self.person, self.title)
+    
+    class Meta:
+        ordering = ("type",)
 
 class LineItem(models.Model):
     experience = models.ForeignKey(ExperienceItem, related_name="items")
