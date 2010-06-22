@@ -12,6 +12,8 @@ class ExperienceAdmin(admin.ModelAdmin):
     inlines = [
         LineItemInline
     ]
+    list_display = ["title", "time_period", "type", "order"]
+    list_editable = ["order"]
 
 class ExperienceTypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'order')

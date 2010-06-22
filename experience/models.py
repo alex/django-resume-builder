@@ -21,6 +21,7 @@ class ExperienceItem(models.Model):
     location = models.CharField(max_length=255, blank=True)
     time_period = models.CharField(max_length=100)
     description = models.TextField()
+    order = models.IntegerField()
 
     def __unicode__(self):
         return "%s at %s" % (self.person, self.title)

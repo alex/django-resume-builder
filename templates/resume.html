@@ -18,7 +18,7 @@
         {% regroup person.experiences.all by type as items %}
         {% for type in items|sort_by_order %}
             <h2>{{ type.grouper }}</h2>
-            {% for experience in type.list %}
+            {% for experience in type.list|sorted:"order" %}
                 <div class="job">
                     <p class="date">{{ experience.time_period }}</p>
                     <div class="job_data">
